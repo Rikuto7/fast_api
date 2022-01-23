@@ -5,7 +5,6 @@ from sqlalchemy.orm import Session
 
 
 from app.api.database import get_db
-from app.api.models.models import User
 from app.api.func import post as post_func, user as user_func
 from app.api.schemas import schemas
 

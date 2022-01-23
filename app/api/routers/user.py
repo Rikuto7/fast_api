@@ -4,7 +4,7 @@ from collections import namedtuple
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import FileResponse
 from fastapi.security import OAuth2PasswordRequestForm
-from typing import List, Dict, Optional
+from typing import Optional
 from sqlalchemy.orm import Session
 from uuid import UUID
 
