@@ -6,8 +6,9 @@ services:
       dockerfile: builds/Dockerfile
     container_name: app
     restart: always
-    depends_on:
-      - db
+    # tty: true
+    # depends_on:
+    #   - db
     volumes:
       - .:/work_dir
     env_file:
@@ -15,15 +16,12 @@ services:
       - .envs/.mysql
     # networks:
     #   - fastapi_network
-    # command: uvicorn app.api.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
     command: bash -c "../scripts/run.sh"
     ports:
       - 8000:8000
   db:
     image: mysql:5.7
     container_name: db
-    # restart: always
-    # tty: true
     # networks:
     #   - fastapi_network
     env_file:
@@ -35,6 +33,12 @@ services:
     ports:
       - "3306:3306"
     # command: "touch /var/log/mysql/mysqld.log"
+  redis:
+    image: redis:latest
+    container_name: redis
+    volumes:
+      - ./app:/data
+
 volumes:
   mysql_data:
 
